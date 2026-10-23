@@ -1,0 +1,229 @@
+hassanbola1234567890@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student To-Do App</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 40px 16px;
+      color: #f1f5f9;
+      background: linear-gradient(135deg, #0f172a, #312e81, #1e1b4b);
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid #475569;
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #cbd5e1;
+      margin-bottom: 28px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    #taskInput {
+      flex: 1;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid #64748b;
+      border-radius: 9px;
+      background: #1e293b;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #taskInput:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #addBtn {
+      background: #7c3aed;
+      padding: 0 20px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #c4b5fd;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+    }
+
+    .task-check {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+      accent-color: #8b5cf6;
+    }
+
+    .task-text {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
+
+    .completed .task-text {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
+
+    .actions {
+      display: flex;
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .edit-btn {
+      background: #2563eb;
+    }
+
+    .delete-btn {
+      background: #dc2626;
+    }
+
+    #status {
+      min-height: 24px;
+      margin-top: 18px;
+      color: #c4b5fd;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 28px 10px;
+      color: #94a3b8;
+      background: #1e293b;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .container {
+        padding: 20px 14px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      form {
+        flex-direction: column;
+      }
+
+      #addBtn {
+        padding: 13px;
+      }
+
+      .task-item {
+        flex-wrap: wrap;
+      }
+
+      .actions {
+        margin-left: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="app.js"></script>
+  <main class="container">
+    <h1>📚 My To-Do List</h1>
+    <p class="subtitle">Stay organized. Finish your goals.</p>
+    <form id="taskForm">
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Enter your task..."
+        maxlength="300"
+        required
+        autocomplete="off"     >
+      <button type="submit" id="addBtn">+ Add Task</button>
+    </form>
+    <div class="stats">
+      <span id="totalTasks">Total: 0</span>
+      <span id="completedTasks">Completed: 0</span>
+    </div>
+    <ul id="taskList">
+      <li class="empty">Loading your tasks...</li>
+    </ul>
+    <p id="status" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
